@@ -14,9 +14,9 @@ import java.util.stream.Collectors;
 public class CarDataAccessService implements CarDao {
 
   private static final List<Car> DB = new ArrayList<>(Arrays.asList(
-      new Car(1L, "BMV", "i8", Color.BLACK),
-      new Car(2L, "Honda", "Civic", Color.BLUE),
-      new Car(3L, "Audi", "A8", Color.GREEN)
+      new Car(1L, "BMV", "i8", Color.BLACK, 2020),
+      new Car(2L, "Honda", "Civic", Color.BLUE, 2018),
+      new Car(3L, "Audi", "A8", Color.GREEN, 2011)
   ));
 
   @Override
@@ -70,5 +70,12 @@ public class CarDataAccessService implements CarDao {
       return true;
     }
     return false;
+  }
+
+  @Override
+  public List<Car> findCarsByYears(Integer yearFrom, Integer yearTo) {
+    return DB.stream()
+        .filter(car -> car.getYear() >= yearFrom && car.getYear() <= yearTo)
+        .collect(Collectors.toList());
   }
 }
