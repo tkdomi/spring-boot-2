@@ -5,15 +5,17 @@ public class Car {
   private String mark;
   private String model;
   private Color color;
+  private Integer year;
 
   public Car() {
   }
 
-  public Car(long id, String mark, String model, Color color) {
+  public Car(long id, String mark, String model, Color color, Integer year) {
     this.id = id;
     this.mark = mark;
     this.model = model;
     this.color = color;
+    this.year = year;
   }
 
   public Long getId() {
@@ -46,5 +48,24 @@ public class Car {
 
   public void setColor(Color color) {
     this.color = color;
+  }
+
+  public Integer getYear() {
+    return year;
+  }
+
+  public void setYear(Integer year) {
+    this.year = year;
+  }
+
+  @Override
+  public String toString() {
+    return "Car{" +
+        "id=" + id +
+        ", mark='" + mark + '\'' +
+        ", model='" + model + '\'' +
+        ", color=" + color +
+        ", year=" + year +
+        '}';
   }
 }

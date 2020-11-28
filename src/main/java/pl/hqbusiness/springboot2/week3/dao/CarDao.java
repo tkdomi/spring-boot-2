@@ -21,4 +21,6 @@ public interface CarDao {
   boolean repaintCar(Long id, Color color);
 
   List<Car> findCarsByColor(Color color);
+
+  List<Car> findCarsByYears(Integer yearFrom, Integer yearTo);
 }

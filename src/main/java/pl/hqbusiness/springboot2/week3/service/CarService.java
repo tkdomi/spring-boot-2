@@ -1,5 +1,6 @@
 package pl.hqbusiness.springboot2.week3.service;
 
+import io.swagger.models.auth.In;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,7 @@ public class CarService {
   private final CarDao carDao;
 
   @Autowired
-  public CarService(@Qualifier("carFakeDao") CarDao carDao) {
+  public CarService(@Qualifier("carMysqlDao") CarDao carDao) {
     this.carDao = carDao;
   }
 
@@ -47,4 +48,6 @@ public class CarService {
   public List<Car> findCarsByColor(Color color) {
     return carDao.findCarsByColor(color);
   }
+
+  public List<Car> findCarsByYears(Integer yearFrom, Integer yearTo) { return carDao.findCarsByYears(yearFrom, yearTo); }
 }

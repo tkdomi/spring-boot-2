@@ -74,4 +74,13 @@ public class CarAPI {
 
     return ResponseEntity.ok(colorCars);
   }
+
+  @GetMapping(path="/filter-by-years")
+  public ResponseEntity<List<Car>> filterCarsByYears(@RequestParam Integer yearFrom, @RequestParam Integer yearTo){
+    List<Car> cars = carService.findCarsByYears(yearFrom, yearTo);
+
+    return !cars.isEmpty()
+        ? ResponseEntity.ok(cars)
+        : ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+  }
 }
